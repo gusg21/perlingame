@@ -1,4 +1,5 @@
 ﻿using System;
+using PerlinGame_Shared;
 
 namespace PerlinGame_Windows
 {
@@ -7,7 +8,7 @@ namespace PerlinGame_Windows
         [STAThread]
         static void Main()
         {
-            using (var game = new Game1())
+            using (var game = new PerlinGame())
                 game.Run();
         }
     }

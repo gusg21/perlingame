@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PerlinGame_Windows", "PerlinGame_Windows\PerlinGame_Windows.csproj", "{3FE16064-1BCC-4A9A-8029-53F5C2A97ABE}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PerlinGame_Shared", "PerlinGame_Shared\PerlinGame_Shared.shproj", "{A0CDBD0E-3A41-42B7-9425-A838BC2C7383}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

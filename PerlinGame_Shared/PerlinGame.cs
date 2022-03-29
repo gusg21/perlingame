@@ -1,24 +1,28 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace PerlinGame_Windows
+namespace PerlinGame_Shared
 {
-    public class Game1 : Game
+    public class PerlinGame : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-
-        public Game1()
+        private PerlinMap _map;
+        public PerlinGame()
         {
             _graphics = new GraphicsDeviceManager(this);
+            
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            _graphics.PreferredBackBufferWidth = 1024;
+            _graphics.PreferredBackBufferHeight = 768;
+            _graphics.ApplyChanges();
 
             base.Initialize();
         }
@@ -27,25 +31,26 @@ namespace PerlinGame_Windows
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            _map = new PerlinMap(GraphicsDevice, Content, 30, 0.01f);
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-                Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            // TODO: Add your update logic here
+            if (Keyboard.GetState()[Keys.K] == KeyState.Down)
+                _map.GenerateMap();
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(new Color(34, 32, 52));
 
-            // TODO: Add your drawing code here
+            _spriteBatch.Begin();
+            {
+                _map.Draw(_spriteBatch);
+            }
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
